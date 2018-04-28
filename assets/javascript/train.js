@@ -53,8 +53,8 @@ $(document).ready(function(){
         var trainTime = childSnapshot.val().time;
         var trainStamp = childSnapshot.val().timestamp;
 
-        var diffTime = moment().diff(moment.unix(trainTime), "minutes");
-        var timeRemainder = moment().diff(moment.unix(trainTime), "minutes") % trainFrequency;
+        var diffTime = moment().diff(moment(trainTime), "minutes");
+        var timeRemainder = moment().diff(moment(trainTime), "minutes") % trainFrequency;
         var minutes = trainFrequency - timeRemainder;
 
         

@@ -4,14 +4,15 @@ $(document).ready(function(){
 
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyAtUk10SVrWvy9DH9ITOp6TfEBRUOSJt-Q",
-        authDomain: "train-form2.firebaseapp.com",
-        databaseURL: "https://train-form2.firebaseio.com",
-        projectId: "train-form2",
-        storageBucket: "",
-        messagingSenderId: "930431426901"
-    }
+        apiKey: "AIzaSyBjcL9z0eAIUcRcsyhuJ_jgqB9UPW0F2m8",
+        authDomain: "train-form-5cc9e.firebaseapp.com",
+        databaseURL: "https://train-form-5cc9e.firebaseio.com",
+        projectId: "train-form-5cc9e",
+        storageBucket: "train-form-5cc9e.appspot.com",
+        messagingSenderId: "857072185147"
+    };
     firebase.initializeApp(config);
+
 
     var trainsDb = firebase.database();
 
@@ -20,7 +21,7 @@ $(document).ready(function(){
         var name = $('#name').val();
         var destination = $('#destination').val();
         var frequency = $('#frequency').val();
-        var time = moment($("#trainTime").val().trim(), "HH:mm").format("LT");
+        var time = $('#time').val();
 
         var train = {
             name: name,
@@ -56,16 +57,15 @@ $(document).ready(function(){
         var timeRemainder = moment().diff(moment.unix(trainTime), "minutes") % trainFrequency;
         var minutes = trainFrequency - timeRemainder;
 
-        var nextTrainArrival = moment().add(minutes, "m").format("hh:mm A"); 
+        
 
         $(".table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + trainTime + " mins" + "</td><td>" + trainStamp + "</td><td>" + minutes + "</td></tr>");
 
 
 
 
-        $('table').append(JSON.stringify(childSnapshot.val()));
+  
     });
 });
 
 
-// look at employee activity
